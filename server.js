@@ -1,6 +1,7 @@
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+var router = express.Router();
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,10 +20,10 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 const db = require("./models/");
 
+router.get('/exercise', function (req,res) {
+  res.render('exercise', { title: 'exercise'})
+})
 
-app.get("/exercise", function(req,res) {
-  res.sendFile(__dirname, "./public/exercise.html")
-});
 
 
 app.listen(PORT, () => {
