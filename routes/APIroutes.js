@@ -24,26 +24,14 @@ module.exports = function (app){
         })
     });
     //got this code from the nosql activities. 
-    app.put("/api/workouts/:id", ({ params }, res) => {
-        db.Workout.updateOne(
-          {
-            _id: db.Workout(params.id)
-          },
-          {
-            $set: {
-              new: true
-            }
-          },
-      
-          (error, edited) => {
-            if (error) {
-              console.log(error);
-              res.send(error);
-            } else {
-              console.log(edited);
-              res.send(edited);
-            }
-          }
-        );
+    app.put("/api/workouts/:id", (req, res) => {
+        db.Workout.findByIdAndUpdate(req.params.id, {$push: {exercise: req.body}})
+        .then(dbWorkout => {
+            res.json(dbWorkout)
+        })
+        .catch((err) => {
+            res.json(err)
+        })
+         
       });
 }
