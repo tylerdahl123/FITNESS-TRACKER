@@ -20,9 +20,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { use
 
 const db = require("./models/");
 
-router.get('/exercise', function (req,res) {
-  res.render('exercise', { title: 'exercise'})
-})
+require("./routes/HTMLroutes")(app);
 
 
 
