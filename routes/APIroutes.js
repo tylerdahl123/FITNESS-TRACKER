@@ -16,6 +16,8 @@ module.exports = function (app){
             res.json(err)
         })
     });
+   
+    
     app.post("/api/workouts", (req, res) => {
         db.Workout.create({})
         .then(data => res.json(data))
@@ -25,7 +27,7 @@ module.exports = function (app){
     });
     //got this code from the nosql activities. 
     app.put("/api/workouts/:id", (req, res) => {
-        db.Workout.findByIdAndUpdate(req.params.id, {$push: {exercise: req.body}})
+        db.Workout.findByIdAndUpdate(req.params.id, {$push: {exercises: req.body}})
         .then(dbWorkout => {
             res.json(dbWorkout)
         })
@@ -34,4 +36,13 @@ module.exports = function (app){
         })
          
       });
+       app.get("/api/workouts/range", function(req,res) {
+        db.Workout.find({})
+        .then(dbWorkout => {
+            res.json(dbWorkout);
+        })
+        .catch(err => {
+            res.json(err)
+        })
+    });
 }
