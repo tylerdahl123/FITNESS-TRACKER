@@ -15,17 +15,16 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb+srv://TylerDahl:Magnolia12@cluster0.sr5lu.mongodb.net/Workout?retryWrites=true&w=majority',
+  process.env.MONGODB_URI || 'mongodb://localhost/Workouts',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: false
   }
-);  
+);
 const db = require("./models/");
 //got help from google on this...why is this require route differnt from the others?
 require("./routes/HTMLroutes")(app);
