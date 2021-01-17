@@ -10,6 +10,12 @@ mongoose.connect(
       useFindAndModify: false
     }
   );  
+  mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+
+mongoose.connect(
+    process.MONGODB
+)
+
 const WorkoutSchema = new Schema ({
     day: {
         type: Date,

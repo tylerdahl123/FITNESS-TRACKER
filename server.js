@@ -15,6 +15,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
 mongoose.connect(
   process.env.MONGODB_URI || 'mongodb://localhost/Workouts',
   {
@@ -23,7 +24,7 @@ mongoose.connect(
     useCreateIndex: true,
     useFindAndModify: false
   }
-);
+);  
 const db = require("./models/");
 //got help from google on this...why is this require route differnt from the others?
 require("./routes/HTMLroutes")(app);
