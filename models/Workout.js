@@ -1,16 +1,9 @@
 const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb+srv://TylerDahl:Magnolia12@cluster0.sr5lu.mongodb.net/Workout?retryWrites=true&w=majority',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-    }
-  );  
-  
+ 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true });
+
 
 
 const WorkoutSchema = new Schema ({
