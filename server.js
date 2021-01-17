@@ -34,4 +34,4 @@ require("./routes/APIroutes")(app);
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}!`);
   });
-  
+  // mongodb+srv://TylerDahl:Magnolia12@cluster0.sr5lu.mongodb.net/workouts?retryWrites=true&w=majority
